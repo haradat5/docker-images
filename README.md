@@ -6,3 +6,11 @@
 ## DockerHub
 
 The container images are automatically built on `DockerHub` at <https://hub.docker.com/r/paesanilab/>
+
+For example you can download the `psi4` container locally with:
+
+    docker pull paesanilab/psi4
+
+Then get a shell inside the container with
+
+    docker run -it paesanilab/psi4 /bin/bash
