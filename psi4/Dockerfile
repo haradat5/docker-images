@@ -1,13 +1,10 @@
-#
 # PSI4 Dockerfile
 #
-# http://psicode.org/psi4manual/master/index.html
+# credits to:
 #
 # https://github.com/cgsanchez/ScienceContainers/Psi4
-#
-#
 
-FROM continuum/miniconda3:4.4.10
+FROM continuumio/miniconda3:4.4.10
 
 MAINTAINER A. Zonca <zonca@sdsc.edu>
 
