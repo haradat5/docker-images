@@ -9,9 +9,9 @@ FROM continuumio/miniconda3:4.4.10
 MAINTAINER A. Zonca <zonca@sdsc.edu>
 
 # Also Prune MKL to reduce image size
+# add first the psi4 channel and then the psi4/agg channel, so that the second has higher priority
 
-RUN conda config --add channels http://conda.anaconda.org/psi4/label/agg && \
-    conda install --yes psi4 && \
+RUN conda install --yes psi4 -c psi4/label/agg -c psi4 && \
     conda clean -tipsy && \
     cd /opt/conda/lib && \
     mkdir tmp && \
