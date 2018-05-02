@@ -8,13 +8,12 @@ FROM continuumio/miniconda3:4.4.10
 
 MAINTAINER A. Zonca <zonca@sdsc.edu>
 
+# Also Prune MKL to reduce image size
+
 RUN conda config --add channels http://conda.anaconda.org/psi4/label/agg && \
     conda install --yes psi4 && \
-    conda clean -tipsy
-
-# Prune MKL to reduce image size
-
-RUN cd /opt/conda/lib && \
+    conda clean -tipsy && \
+    cd /opt/conda/lib && \
     mkdir tmp && \
     mv *mkl* tmp/ && \
     cd tmp && \
