@@ -18,7 +18,14 @@ RUN conda config --add channels http://conda.anaconda.org/psi4/label/agg && \
     mv *mkl* tmp/ && \
     cd tmp && \
     mv libmkl_core.so libmkl_intel_lp64.so libmkl_intel_thread.so libmkl_mc3.so libmkl_rt.so /opt/conda/lib/ && \
-    rm -r /opt/conda/lib/tmp/
+    rm -r /opt/conda/lib/tmp/ && \
+    cd /opt/conda/pkgs/mkl-*/lib && \
+    mkdir tmp && \
+    mv *mkl* tmp/ && \
+    cd tmp && \
+    mv libmkl_core.so libmkl_intel_lp64.so libmkl_intel_thread.so libmkl_mc3.so libmkl_rt.so .. && \
+    cd .. && \
+    rm -r tmp/
 
 #
 # The scratch_dir should be used for scratch files, mounted at runtime
