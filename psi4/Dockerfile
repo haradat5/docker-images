@@ -9,7 +9,8 @@ FROM continuumio/miniconda3:4.4.10
 MAINTAINER A. Zonca <zonca@sdsc.edu>
 
 RUN conda config --add channels http://conda.anaconda.org/psi4/label/agg && \
-    conda install --yes psi4
+    conda install --yes psi4 && \
+    conda clean -tipsy
 
 #
 # The scratch_dir should be used for scratch files, mounted at runtime
