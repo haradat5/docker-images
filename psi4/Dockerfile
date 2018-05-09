@@ -8,24 +8,10 @@ FROM continuumio/miniconda3:4.4.10
 
 MAINTAINER A. Zonca <zonca@sdsc.edu>
 
-# Also Prune MKL to reduce image size
-# add first the psi4 channel and then the psi4/agg channel, so that the second has higher priority
+# psi4 built with openblas, see http://forum.psicode.org/t/reduce-size-of-docker-image/894/21
 
-RUN conda install --yes psi4 -c psi4/label/agg -c psi4 && \
-    conda clean -tipsy && \
-    cd /opt/conda/lib && \
-    mkdir tmp && \
-    mv *mkl* tmp/ && \
-    cd tmp && \
-    mv libmkl_core.so libmkl_intel_lp64.so libmkl_intel_thread.so libmkl_mc3.so libmkl_rt.so /opt/conda/lib/ && \
-    rm -r /opt/conda/lib/tmp/ && \
-    cd /opt/conda/pkgs/mkl-*/lib && \
-    mkdir tmp && \
-    mv *mkl* tmp/ && \
-    cd tmp && \
-    mv libmkl_core.so libmkl_intel_lp64.so libmkl_intel_thread.so libmkl_mc3.so libmkl_rt.so .. && \
-    cd .. && \
-    rm -r tmp/
+RUN conda install psi4 nomkl -c psi4/label/nomkl -c psi4/label/dev && \
+    conda clean -tipsy
 
 #
 # The scratch_dir should be used for scratch files, mounted at runtime
