@@ -46,4 +46,4 @@ ENV OMP_NUM_THREADS=1
 
 #WORKDIR /run_dir
 
-COPY psi4_test.py /psi4_test.py
+COPY psi4_test.py run_psi4.py /
