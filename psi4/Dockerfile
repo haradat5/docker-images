@@ -45,5 +45,6 @@ ENV OMP_NUM_THREADS=1
 #ENV PSI_SCRATCH=/scratch_dir
 
 #WORKDIR /run_dir
+RUN mkdir -p /root/shared/results
 
 COPY psi4_test.py run_psi4.py /

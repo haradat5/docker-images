@@ -22,3 +22,7 @@ psi4.geometry(mol)
 psi4.set_num_threads(nthreads)
 energy = psi4.energy(model)
 print("E({}) = {}".format(model, energy))
+
+with open("/root/shared/results/psi4_output.txt", "w") as f:
+    f.write(mol)
+    f.write("\nE({}) = {}".format(model, energy))
