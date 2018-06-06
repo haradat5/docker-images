@@ -1,3 +1,4 @@
+import subprocess
 import argparse
 
 import psi4
@@ -7,7 +8,15 @@ parser.add_argument("--mol", dest="mol")
 
 args = parser.parse_args()
 
-nthreads = 2
+try:
+    nthreads = int(subprocess.check_output(["grep", "-c", "cores", "/proc/cpuinfo"]))
+    print(f"Using {nthreads} threads")
+except:
+    e = sys.exc_info()[0]
+    print("Error detecting number of cores:")
+    print(e)
+    print("Setting 1 thread")
+    nthreads = 1
 
 mol = args.mol.replace(",", "\n")
 print(mol)
