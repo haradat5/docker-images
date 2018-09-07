@@ -47,4 +47,4 @@ ENV OMP_NUM_THREADS=1
 #WORKDIR /run_dir
 RUN mkdir -p /root/shared/results
 
-COPY psi4_test.py run_psi4.py /
+COPY psi4_test.py run_psi4.py run_pyscript.py /
